@@ -1,0 +1,22 @@
+﻿@model Domain.Models.Account
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="row">
+    <div class="col-lg-3">
+        <form action="/Account/Login">
+            <label>Почта:</label>
+            <input type="text" name="Mail" class="form-control"/>
+            <label>Пароль:</label>
+            <input type="text" name="Password" class="form-control"/>
+            <br/>
+            <input type="submit" class="btn btn-default" value="Войти"/>
+        </form>
+    </div>
+    <div class="col-lg-7"></div>
+    <div class="col-lg-2">
+        <a href="/Account/Registry" class="btn btn-default">Зарегестрироваться</a>
+    </div>
+</div>

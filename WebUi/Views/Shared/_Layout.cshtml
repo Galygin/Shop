@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <img src="~/Images/Cap.jpg" />
+            </div>
+            <div class="row">
+                <nav class="navbar navbar-default">
+                    <div class="collapse navbar-collapse" id="main-menu">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/Home/Index">Главная <span class="sr-only">(current)</span></a></li>
+                            <li><a href="/Product/Index">Товары</a></li>
+                            <li><a href="/Recall/Index">Отзывы</a></li>
+                            <li><a href="/Contact/Index">Контакты</a></li>
+                            <li><a href="#">Корзина</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/Account/Login">Вход</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="container body-content">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>@DateTime.Now.Year - Сладкая жизнь (с)</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

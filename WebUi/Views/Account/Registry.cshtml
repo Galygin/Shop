@@ -1,0 +1,37 @@
+﻿@model Domain.Models.Account
+
+@{
+    ViewBag.Title = "Регистрация";
+}
+
+<div class="row">
+    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+        <form role="form" action="/Account/Registry" method="post">
+            <div class="form-group">
+                <h4>Имя:</h4>
+                <input type="text" class="form-control" name="FirstName">
+            </div>
+            <div class="form-group">
+                <h4>Фамилия:</h4>
+                <input type="text" class="form-control" name="SecondName">
+            </div>
+            <div class="form-group">
+                <h4>Email:</h4>
+                <input type="text" class="form-control" name="Mail">
+            </div>
+            <div class="form-group">
+                <h4>Пароль:</h4>
+                <input type="text" class="form-control" name="Password1">
+            </div>
+            <div class="form-group">
+                <h4>Повторите пароль:</h4>
+                <input type="text" class="form-control" name="Password2">
+            </div>
+            <input type="submit" class="btn btn-default" value="Регистрация">
+        </form>
+    </div>
+</div>
+<div class="row">
+    <br/>
+    <p>В целях вашей безопасности мы бы вам посоветовали придумать пароль посложнее, но такие пароли и забываются быстро и вводятся долго, поэтому делайте так, как считаете нужным :)</p>
+</div>

@@ -1,0 +1,19 @@
+﻿@using Domain.Models;
+@model  IEnumerable<Recall>
+@{
+    ViewBag.Title = "Отзывы";
+}
+
+<div class="row">
+    <a class="btn btn-default" href="/Recall/Create" role="button"><h4>Добавить отзыв</h4></a>
+    <br /> <br />
+</div>
+<div class="row">
+    @foreach (var i in Model)
+    {
+        <blockquote>
+            <p>@i.Text</p>
+            <footer>@i.Author</footer>
+        </blockquote>
+    }
+</div>

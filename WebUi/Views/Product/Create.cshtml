@@ -1,0 +1,15 @@
+﻿@model Domain.Models.Product
+
+@{
+    ViewBag.Title = "Добавление лимонада";
+}
+
+<h2>Добавление продукта</h2>
+<form action="/Product/Create" method="post">
+    <p>Имя: </p><input type="text" name="Name" />
+    <p>Цена: </p><input type="text" name="Price" />
+    <p>Объём: </p><input type="text" name="Size" />
+    <br /><br />
+    <input type="submit" value="Отправить" />
+</form>
+<p><a href="/Product/Index">Назад</a></p>
