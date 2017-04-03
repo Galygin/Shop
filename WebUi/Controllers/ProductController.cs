@@ -38,5 +38,11 @@ namespace WebUi.Controllers
             DB.AddProduct(product);
             return View(product);
         }
+
+        [HttpGet]
+        public ActionResult ProductLis()
+        {
+            return view();
+        }
     }
 }
