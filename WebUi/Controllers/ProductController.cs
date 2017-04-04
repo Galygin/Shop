@@ -46,5 +46,12 @@ namespace WebUi.Controllers
             DB.AddProduct(product);
             return View(product);
         }
+
+        [HttpGet]
+        public ActionResult Cart()
+        {
+            ViewBag.Products = DB.ReturnProduct();
+            return View(DB.ReturnPurchases());
+        }
     }
 }

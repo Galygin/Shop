@@ -143,6 +143,7 @@
     <Content Include="Views\Product\Ok.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Recall\Ok.cshtml" />
+    <Content Include="Views\Product\Cart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

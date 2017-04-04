@@ -71,5 +71,10 @@ namespace Services
         {
             return ProductRep.GetList();
         }
+
+        public IEnumerable<Purchase> ReturnPurchases()
+        {
+            return PurchaseRep.GetList();
+        }
     }
 }

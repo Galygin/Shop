@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Domain.Models.Purchase>
+
+@{
+    ViewBag.Title = "Cart";
+}
+
+<h2>Корзина Пользователя под номером "228"</h2>
+<div class="row">
+    <div class="col-lg-5">
+        <table class="table">
+            <tr>
+                <th>Номер покупки</th>
+                <th>Номер продукта</th>
+                <th>Название лимонада</th>
+            </tr>
+            @foreach (var i in Model)
+            {
+                if (i.AccountID == 228)
+                {
+                    <tr>
+                        <td>@i.ID</td>
+                        <td>@i.ProductID</td>
+                            @foreach (var j in ViewBag.Products)
+                            {
+                                if (i.ProductID == j.ID)
+                                {
+                                    <td>@j.Name</td>
+                                }
+                            }
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>
