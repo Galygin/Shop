@@ -31,5 +31,12 @@ namespace WebUi.Controllers
             DB.AddRecall(rec);
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Remove(Recall rec)
+        {
+            DB.RemoveRecall(rec);
+            return View();
+        }
     }
 }

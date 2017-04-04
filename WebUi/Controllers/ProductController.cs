@@ -19,11 +19,18 @@ namespace WebUi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(int id)
+        public ActionResult AddToCart(int id)
         {
             DB.AddToCart(id);
             IEnumerable<Product> p= new List<Product>();
             return View("Ok",p);
+        }
+
+        [HttpPost]
+        public ActionResult Remove(int id)
+        {
+            DB.RemoveProduct(id);
+            return View("Ok");
         }
 
         [HttpGet]
@@ -42,7 +49,7 @@ namespace WebUi.Controllers
         [HttpGet]
         public ActionResult ProductLis()
         {
-            return view();
+            return View();
         }
     }
 }

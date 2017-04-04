@@ -20,12 +20,18 @@
                         <h4>Цена: @l.Price руб</h4>
                         <h4>Объём: @l.Size л</h4>
                         <h4>Наличие: @l.Count шт</h4>
-                        @using (Html.BeginForm("Index", "Product"))
+                        @using (Html.BeginForm("AddToCart", "Product"))
                         {
                             <input type="hidden" name="ID" id="ID" value="@l.ID"/>
-                            
-                            <h4><input type="submit" class="btn btn-success" value="В корзину"></h4>
+                            <h4><input type="submit" class="btn btn-success" value="В корзину"> </h4>                  
                         }
+						@using (Html.BeginForm("Remove", "Product"))
+						{
+							<input type="hidden" name="ID" id="ID" value="@l.ID"/>
+							<h4><input type="submit" class="btn btn-danger" value="В бездну"></h4>
+						}
+
+						
                     </div>
                 </div>
             </div>
