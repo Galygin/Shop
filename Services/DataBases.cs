@@ -20,6 +20,12 @@ namespace Services
             ProductRep.Save();
         }
 
+        public void RemoveProduct(int id)
+        {
+            ProductRep.Delete(id);
+            ProductRep.Save();
+        }
+
         public void AddToCart(int id)
         {
             Purchase pc = new Purchase() { ProductID = id, AccountID = 228,};
@@ -47,6 +53,12 @@ namespace Services
         public void AddRecall(Recall rec)
         {
             RecallRep.Create(rec);
+            RecallRep.Save();
+        }
+
+        public void RemoveRecall(Recall rec)
+        {
+            RecallRep.Delete(rec.ID);
             RecallRep.Save();
         }
 
