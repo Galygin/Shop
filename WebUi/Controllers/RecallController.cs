@@ -19,6 +19,13 @@ namespace WebUi.Controllers
             return View(DB.ReturnRecall());
         }
 
+        [HttpPost]
+        public ActionResult Remove(int id)
+        {
+            DB.RemoveRecall(id);
+            return View("Ok");
+        }
+
         [HttpGet]
         public ActionResult Create()
         {
@@ -32,11 +39,5 @@ namespace WebUi.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Remove(Recall rec)
-        {
-            DB.RemoveRecall(rec);
-            return View();
-        }
     }
 }

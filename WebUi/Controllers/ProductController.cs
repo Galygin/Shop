@@ -12,6 +12,7 @@ namespace WebUi.Controllers
     public class ProductController : Controller
     {
         DataBases DB = new DataBases();
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -44,12 +45,6 @@ namespace WebUi.Controllers
         {
             DB.AddProduct(product);
             return View(product);
-        }
-
-        [HttpGet]
-        public ActionResult ProductLis()
-        {
-            return View();
         }
     }
 }

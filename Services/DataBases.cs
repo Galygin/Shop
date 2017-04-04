@@ -56,9 +56,9 @@ namespace Services
             RecallRep.Save();
         }
 
-        public void RemoveRecall(Recall rec)
+        public void RemoveRecall(int id)
         {
-            RecallRep.Delete(rec.ID);
+            RecallRep.Delete(id);
             RecallRep.Save();
         }
 

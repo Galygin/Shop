@@ -6,14 +6,25 @@
 
 <div class="row">
     <a class="btn btn-default" href="/Recall/Create" role="button"><h4>Добавить отзыв</h4></a>
-    <br /> <br />
+    <br/> <br/>
 </div>
-<div class="row">
+
     @foreach (var i in Model)
     {
-        <blockquote>
-            <p>@i.Text</p>
-            <footer>@i.Author</footer>
-        </blockquote>
+        <div class="row">
+            <div class="col-lg-11">
+                <blockquote>
+                    <p>@i.Text</p>
+                    <footer>@i.Author</footer>
+                </blockquote>
+            </div>
+            <div class="col-lg-1">
+                @using (Html.BeginForm("Remove", "Recall"))
+                {
+                        
+                    <input type="hidden" name="ID" value="@i.ID" />
+                    <input type="submit" class="btn btn-default" value="Удалить" />
+                }
+            </div>
+        </div>
     }
-</div>
