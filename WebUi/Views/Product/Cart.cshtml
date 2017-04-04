@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Domain.Models.Purchase>
 
 @{
-    ViewBag.Title = "Cart";
+    ViewBag.Title = "Корзина";
 }
 
-<h2>Корзина Пользователя под номером "228"</h2>
+<h2>Корзина Пользователя под номером "7"</h2>
 <div class="row">
     <div class="col-lg-5">
         <table class="table">
@@ -12,10 +12,11 @@
                 <th>Номер покупки</th>
                 <th>Номер продукта</th>
                 <th>Название лимонада</th>
+                <th>Стоимость</th>
             </tr>
             @foreach (var i in Model)
             {
-                if (i.AccountID == 228)
+                if (i.AccountID == 7)
                 {
                     <tr>
                         <td>@i.ID</td>
@@ -25,6 +26,7 @@
                                 if (i.ProductID == j.ID)
                                 {
                                     <td>@j.Name</td>
+                                    <td>@j.Price</td>
                                 }
                             }
                     </tr>

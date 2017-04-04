@@ -4,7 +4,7 @@
     ViewBag.Title = "Лимонад";
 }
 
-<p><a href="/Product/Create">Добавить лимонад</a></p>
+<p><a href="/Product/Create" class="btn btn-default">Добавить лимонад</a></p>
 
 <div class="row">
     @foreach (var l in Model)
@@ -28,7 +28,7 @@
 						@using (Html.BeginForm("Remove", "Product"))
 						{
 							<input type="hidden" name="ID" id="ID" value="@l.ID"/>
-							<h4><input type="submit" class="btn btn-danger" value="В бездну"></h4>
+							<h4><input type="submit" class="btn btn-danger" value="Удалить"></h4>
 						}
                     </div>
                 </div>

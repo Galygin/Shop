@@ -28,7 +28,7 @@ namespace Services
 
         public void AddToCart(int id)
         {
-            Purchase pc = new Purchase() { ProductID = id, AccountID = 228,};
+            Purchase pc = new Purchase() { ProductID = id, AccountID = 7,};
             PurchaseRep.Create(pc);
             PurchaseRep.Save();
         }

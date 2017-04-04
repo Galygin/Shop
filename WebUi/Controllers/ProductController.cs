@@ -31,7 +31,7 @@ namespace WebUi.Controllers
         public ActionResult Remove(int id)
         {
             DB.RemoveProduct(id);
-            return View("Ok");
+            return View("ROk");
         }
 
         [HttpGet]

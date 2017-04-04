@@ -5,11 +5,18 @@
 }
 
 <h2>Добавление продукта</h2>
-<form action="/Product/Create" method="post">
-    <p>Имя: </p><input type="text" name="Name" />
-    <p>Цена: </p><input type="text" name="Price" />
-    <p>Объём: </p><input type="text" name="Size" />
-    <br /><br />
-    <input type="submit" value="Отправить" />
-</form>
-<p><a href="/Product/Index">Назад</a></p>
+<br/>
+<div class="row">
+    <div class="col-lg-4">
+        <form action="/Product/Create" method="post">
+            <label>Название</label>
+            <input type="text" name="Name" class="form-control"/>
+            <label>Цена</label>
+            <input type="text" name="Price" class="form-control"/>
+            <label>Объём</label>
+            <input type="text" name="Size" class="form-control"/>
+            <br/>
+            <input type="submit" value="Добавить" class="btn btn-default"/>
+        </form>
+    </div>
+</div>
