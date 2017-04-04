@@ -106,7 +106,7 @@
     <Content Include="Images\Cap.jpg" />
     <Content Include="Images\Апельсиновый .jpg" />
     <Content Include="Images\Клубничный .jpg" />
-    <Content Include="Images\Лимоновый .jpg" />
+    <Content Include="Images\Лимонный .jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
