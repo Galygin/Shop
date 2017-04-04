@@ -42,7 +42,7 @@ namespace WebUi.Controllers
         [HttpGet]
         public ActionResult ProductLis()
         {
-            return view();
+            return View();
         }
     }
 }
