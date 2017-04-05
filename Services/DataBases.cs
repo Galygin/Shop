@@ -76,5 +76,27 @@ namespace Services
         {
             return PurchaseRep.GetList();
         }
+
+        public string Login(Account ac)
+        {
+            IEnumerable<Account> ListAc = AccountRep.GetList();
+            foreach (var i in ListAc)
+            {
+                if (i.Mail==ac.Mail)
+                    if (i.Password == ac.Password)
+                    {
+                        Services.AccountId.ID = i.ID;
+                        return "Вы вошли";
+                    }
+                    else
+                    {
+                        return "Не правильный пароль";
+                    }
+                else
+                {
+                    return "Такой почты не зарегистрировано";
+                }
+            }
+        }
     }
 }
