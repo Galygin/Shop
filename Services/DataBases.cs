@@ -97,6 +97,7 @@ namespace Services
                     return "Такой почты не зарегистрировано";
                 }
             }
+            return "ээээблэт";
         }
     }
 }
