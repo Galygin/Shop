@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Models;
-using Microsoft.Win32;
 using Repository.Repository;
 
 namespace Services
@@ -15,20 +14,6 @@ namespace Services
         SQLAccountRepository AccountRep = new SQLAccountRepository();
         SQLRecallRepository RecallRep = new SQLRecallRepository();
         SQLPurchaseRepository PurchaseRep = new SQLPurchaseRepository();
-        
-        /*public string Login(Account ac)
-        {
-            IEnumerable<Account> ListAc = AccountRep.GetList();
-            foreach (var i in ListAc)
-                if (i.Mail == ac.Mail)
-                    if (i.Password == ac.Password)
-                    {
-                        Services.AccountId.ID = i.ID;
-                        return "Вы вошли";
-                    }
-            return "Ошибочка вышла";
-        }*/
-
         public void AddProduct(Product p)
         {
             ProductRep.Create(p);
@@ -43,14 +28,14 @@ namespace Services
 
         public void AddToCart(int id)
         {
-            /*Purchase pc = new Purchase() { ProductID = id, AccountID = User. };
+            Purchase pc = new Purchase() { ProductID = id, AccountID = 7,};
             PurchaseRep.Create(pc);
-            PurchaseRep.Save();*/
+            PurchaseRep.Save();
         }
 
         public string Registry(Account acc)
         {
-            /*int n = 0;
+            int n = 0;
             foreach (var a in AccountRep.GetList())
                 if (a.Mail != acc.Mail)
                     n++;
@@ -61,7 +46,7 @@ namespace Services
                     AccountRep.Create(acc);
                     AccountRep.Save();
                     return "Регистрация прошла успешно";
-                }*/
+                }
             return "Вы ввели некорректные данные, пожалуйста, повторите попытку и будьте внимательнее. Скорее всего аккаунт с такой почтой уже зарегистрирован, или вы ввели разные пароли";
         }
 
@@ -92,5 +77,27 @@ namespace Services
             return PurchaseRep.GetList();
         }
 
+        public string Login(Account ac)
+        {
+            IEnumerable<Account> ListAc = AccountRep.GetList();
+            foreach (var i in ListAc)
+            {
+                if (i.Mail==ac.Mail)
+                    if (i.Password == ac.Password)
+                    {
+                        Services.AccountId.ID = i.ID;
+                        return "Вы вошли";
+                    }
+                    else
+                    {
+                        return "Не правильный пароль";
+                    }
+                else
+                {
+                    return "Такой почты не зарегистрировано";
+                }
+            }
+            return "ээээблэт";
+        }
     }
 }
