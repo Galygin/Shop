@@ -28,14 +28,14 @@ namespace Services
 
         public void AddToCart(int id)
         {
-            Purchase pc = new Purchase() { ProductID = id, AccountID = 7,};
+            /*Purchase pc = new Purchase() { ProductID = id, AccountID = 7,};
             PurchaseRep.Create(pc);
-            PurchaseRep.Save();
+            PurchaseRep.Save();*/
         }
 
         public string Registry(Account acc)
         {
-            int n = 0;
+            /*int n = 0;
             foreach (var a in AccountRep.GetList())
                 if (a.Mail != acc.Mail)
                     n++;
@@ -46,7 +46,7 @@ namespace Services
                     AccountRep.Create(acc);
                     AccountRep.Save();
                     return "Регистрация прошла успешно";
-                }
+                }*/
             return "Вы ввели некорректные данные, пожалуйста, повторите попытку и будьте внимательнее. Скорее всего аккаунт с такой почтой уже зарегистрирован, или вы ввели разные пароли";
         }
 
@@ -79,7 +79,7 @@ namespace Services
 
         public string Login(Account ac)
         {
-            IEnumerable<Account> ListAc = AccountRep.GetList();
+            /*IEnumerable<Account> ListAc = AccountRep.GetList();
             foreach (var i in ListAc)
             {
                 if (i.Mail==ac.Mail)
@@ -96,7 +96,7 @@ namespace Services
                 {
                     return "Такой почты не зарегистрировано";
                 }
-            }
+            }*/
             return "ээээблэт";
         }
     }
