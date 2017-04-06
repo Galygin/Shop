@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.Security;
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -24,7 +25,14 @@
                             <li><a href="/Product/Cart">Корзина</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/Account/Login">Вход</a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a href="/Account/Login">@User.Identity.Name</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/Account/Login">Вход</a></li>
+                            }
                         </ul>
                     </div>
                 </nav>
