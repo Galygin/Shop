@@ -36,7 +36,7 @@ namespace WebUi.Controllers
         public ActionResult Create(Recall rec)
         {
             DB.AddRecall(rec);
-            return View();
+            return RedirectToAction("Index","Recall");
         }
 
     }

@@ -14,6 +14,7 @@
                 <th>Номер продукта</th>
                 <th>Название лимонада</th>
                 <th>Стоимость</th>
+                <th>Управление</th>
             </tr>
             @foreach (var i in Model)
             {
@@ -30,6 +31,12 @@
                                     <td>@j.Price</td>
                                 }
                             }
+                        <td>
+                            <form action="/Product/DeleteFromCart">
+                                <input type="hidden" name="id" value="@i.ID"/>
+                                <input type="submit" class="btn btn-default" value="Удалить из корзины"/>
+                            </form>
+                        </td>
                     </tr>
                 }
             }

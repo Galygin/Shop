@@ -42,6 +42,16 @@ namespace WebUi.Controllers
             return View("ROk");
         }
 
+        [HttpPost]
+        public ActionResult DeleteFromCart(int id)
+        {
+            SQLPurchaseRepository rf = new SQLPurchaseRepository();
+            rf.Delete(id);
+            rf.Save();
+            return RedirectToAction("Cart", "Product");
+            //return View("Index");
+        }
+
         [HttpGet]
         public ActionResult Create()
         {
