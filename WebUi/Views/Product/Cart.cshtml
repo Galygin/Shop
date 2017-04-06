@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<Domain.Models.Purchase>
+           @using System.Web.Security
 
 @{
     ViewBag.Title = "Корзина";
 }
 
-<h2>Корзина Пользователя под номером "7"</h2>
+<h2>Корзина пользователя "@User.Identity.Name"</h2>
 <div class="row">
     <div class="col-lg-5">
         <table class="table">
@@ -16,7 +17,7 @@
             </tr>
             @foreach (var i in Model)
             {
-                if (i.AccountID == 7)
+                if (i.AccountName == @User.Identity.Name)
                 {
                     <tr>
                         <td>@i.ID</td>

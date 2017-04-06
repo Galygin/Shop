@@ -22,7 +22,15 @@ namespace WebUi.Controllers
         [HttpPost]
         public ActionResult AddToCart(int id)
         {
-            DB.AddToCart(id);
+            //DB.AddToCart(id);
+            SQLPurchaseRepository rp = new SQLPurchaseRepository();
+            Purchase pur = new Purchase()
+            {
+                ProductID = id,
+                AccountName = User.Identity.Name
+            };
+            rp.Create(pur);
+            rp.Save();
             IEnumerable<Product> p= new List<Product>();
             return View("Ok",p);
         }
@@ -51,6 +59,7 @@ namespace WebUi.Controllers
         public ActionResult Cart()
         {
             ViewBag.Products = DB.ReturnProduct();
+            ViewBag.ID = User.Identity.Name;
             return View(DB.ReturnPurchases());
         }
     }

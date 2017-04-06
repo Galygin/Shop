@@ -7,6 +7,7 @@ using Domain.Models;
 using Microsoft.SqlServer.Server;
 using Repository.Context;
 using Repository.Repository;
+using System.Web.Security;
 
 namespace WebUi.Controllers
 {
@@ -14,6 +15,10 @@ namespace WebUi.Controllers
     {
         public ActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+                ViewBag.Hi = User.Identity.Name;
+            else
+                ViewBag.Hi = "гость";
             return View();
         }
     }

@@ -136,8 +136,7 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
-    <Content Include="Views\Account\Registry.cshtml" />
-    <Content Include="Views\Account\Ok.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Recall\Index.cshtml" />
     <Content Include="Views\Recall\Create.cshtml" />
     <Content Include="Views\Product\Ok.cshtml" />

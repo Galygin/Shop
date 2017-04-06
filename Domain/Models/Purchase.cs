@@ -9,6 +9,6 @@ namespace Domain.Models
     public class Purchase : Boss
     {
         public int ProductID { get; set; }
-        public int AccountID { get; set; }
+        public string AccountName { get; set; }
     }
 }

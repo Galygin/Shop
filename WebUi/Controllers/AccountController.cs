@@ -4,27 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Domain.Models;
+using Repository.Context;
 using Repository.Repository;
 using Services;
+using System.Web.Security;
 
 namespace WebUi.Controllers
 {
     public class AccountController : Controller
     {
-        DataBases DB = new DataBases();
-        [HttpGet]
-        public ActionResult Registry()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Registry(Account ac)
-        {
-            ViewBag.Result = DB.Registry(ac);
-            return View("Ok");
-        }
-
         [HttpGet]
         public ActionResult Login()
         {
@@ -32,19 +20,89 @@ namespace WebUi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(Account ac)
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(Login model)
         {
-            ViewBag.Return = DB.Login(ac);
-            return View(ac);
+            if (ModelState.IsValid)
+            {
+                Account ac = null;
+                //using (SQLAccountRepository rep = new SQLAccountRepository())
+                using (ProductContext db = new ProductContext())
+                {
+                    /*foreach (var i in rep.GetList())
+                    {
+                        if ()
+                    }*/
+                    ac = db.Accounts.FirstOrDefault(u => u.Mail == model.Mail && u.Password == model.Password);
+                }
+
+                if (ac != null)
+                {
+                    FormsAuthentication.SetAuthCookie(model.Mail, true);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "нет пользоватеей с такой почтой или паролем");
+                }
+            }
+            return View();
         }
-        /*[HttpPost]
-        public ActionResult Registry(Account ac)
+
+        [HttpGet]
+        public ActionResult Register()
         {
-            if (DB.Registry(ac) == true)
-                ViewBag.Result = "Регистрация прошла успешно";
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(Register model)
+        {
+            Account ac = null;
+            using (ProductContext db = new ProductContext())
+            {
+                ac = db.Accounts.FirstOrDefault(u => u.Mail == model.Mail);
+            }
+
+            if (ac == null)
+            {
+                //using (SQLAccountRepository rp = new SQLAccountRepository())
+                using (ProductContext db = new ProductContext())
+                {
+                    //rp.Create(new User{Mail = model.Mail, Password = model.Password, FirstName = model.FirstName, LastName = model.LastName});
+                    //rp.Save();
+
+                    Account User = new Account()
+                    {
+                        Mail = model.Mail,
+                        Password = model.Password,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName
+                    };
+                    db.Accounts.Add(User);
+
+                    db.SaveChanges();
+                    ac = db.Accounts.Where(u => u.Mail == model.Mail && u.Password == model.Password).FirstOrDefault();
+                }
+
+                if (ac != null)
+                {
+                    FormsAuthentication.SetAuthCookie(model.Mail, true);
+                    return RedirectToAction("Index", "Home");
+                }
+            }
             else
-                ViewBag.Result = "Вы ввели некорректные данные, пожалуйста, повторите попытку и будьте внимательнее. Скорее всего аккаунт с такой почтой уже зарегистрирован, или вы ввели разные пароли";
-            return View("Ok");
-        }*/
+            {
+                ModelState.AddModelError("", "Пользователь с такими данными уже зарегистрирован");
+            }
+            return View();
+        }
+
+        public ActionResult Logoff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index","Home");
+        }
     }
 }
