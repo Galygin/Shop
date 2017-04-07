@@ -1,28 +1,28 @@
 ﻿@model IEnumerable<Domain.Models.Purchase>
-           @using System.Web.Security
+@using System.Web.Security
 
 @{
     ViewBag.Title = "Корзина";
 }
-
-<h2>Корзина пользователя "@User.Identity.Name"</h2>
-<div class="row">
-    <div class="col-lg-5">
-        <table class="table">
-            <tr>
-                <th>Номер покупки</th>
-                <th>Номер продукта</th>
-                <th>Название лимонада</th>
-                <th>Стоимость</th>
-                <th>Управление</th>
-            </tr>
-            @foreach (var i in Model)
-            {
-                if (i.AccountName == @User.Identity.Name)
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row">
+        <div class="col-lg-5">
+            <table class="table">
+                <tr>
+                    <th>Номер покупки</th>
+                    <th>Номер продукта</th>
+                    <th>Название лимонада</th>
+                    <th>Стоимость</th>
+                    <th>Управление</th>
+                </tr>
+                @foreach (var i in Model)
                 {
-                    <tr>
-                        <td>@i.ID</td>
-                        <td>@i.ProductID</td>
+                    if (i.AccountName == @User.Identity.Name)
+                    {
+                        <tr>
+                            <td>@i.ID</td>
+                            <td>@i.ProductID</td>
                             @foreach (var j in ViewBag.Products)
                             {
                                 if (i.ProductID == j.ID)
@@ -31,15 +31,21 @@
                                     <td>@j.Price</td>
                                 }
                             }
-                        <td>
-                            <form action="/Product/DeleteFromCart">
-                                <input type="hidden" name="id" value="@i.ID"/>
-                                <input type="submit" class="btn btn-default" value="Удалить из корзины"/>
-                            </form>
-                        </td>
-                    </tr>
+                            <td>
+                                @using (Html.BeginForm("DeleteFromCart", "Product"))
+                                {
+                                    <input type="hidden" name="id" id="id" value="@i.ID" />
+                                    <h4><input type="submit" class="btn btn-default" value="Удалить"></h4>
+                                }
+                            </td>
+                        </tr>
+                    }
                 }
-            }
-        </table>
+            </table>
+        </div>
     </div>
-</div>
+}
+else
+{
+    <h2>Чтобы покупать лимонад, нужно авторизироваться</h2>
+}
