@@ -61,38 +61,39 @@ namespace WebUi.Controllers
             }
 
             if (ac == null)
-            {
-                using (ProductContext db = new ProductContext())
+                if (model.Password == model.ConfirmPassword)
                 {
-                    Account User = new Account()
+                    using (ProductContext db = new ProductContext())
                     {
-                        Mail = model.Mail,
-                        Password = model.Password,
-                        FirstName = model.FirstName,
-                        LastName = model.LastName
-                    };
-                    db.Accounts.Add(User);
-                    db.SaveChanges();
-                    ac = db.Accounts.Where(u => u.Mail == model.Mail && u.Password == model.Password).FirstOrDefault();
-                }
+                        Account User = new Account()
+                        {
+                            Mail = model.Mail,
+                            Password = model.Password,
+                            FirstName = model.FirstName,
+                            LastName = model.LastName
+                        };
+                        db.Accounts.Add(User);
+                        db.SaveChanges();
+                        ac = db.Accounts.Where(u => u.Mail == model.Mail && u.Password == model.Password).FirstOrDefault();
+                    }
 
-                if (ac != null)
-                {
-                    FormsAuthentication.SetAuthCookie(model.Mail, true);
-                    return RedirectToAction("Index", "Home");
+                    if (ac != null)
+                    {
+                        FormsAuthentication.SetAuthCookie(model.Mail, true);
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
-            }
-            else
-            {
-                ModelState.AddModelError("", "Пользователь с такими данными уже зарегистрирован");
-            }
+                else
+                {
+                    ModelState.AddModelError("", "Пользователь с такими данными уже зарегистрирован");
+                }
             return View();
         }
 
         public ActionResult Logoff()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
