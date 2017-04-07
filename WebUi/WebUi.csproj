@@ -104,9 +104,13 @@
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Images\Cap.jpg" />
+    <Content Include="Images\Coca-Cola .jpg" />
+    <Content Include="Images\Fanta .jpg" />
+    <Content Include="Images\Sprite .jpg" />
     <Content Include="Images\Апельсиновый .jpg" />
     <Content Include="Images\Клубничный .jpg" />
     <Content Include="Images\Лимонный .jpg" />
+    <Content Include="Images\Ситро .jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
