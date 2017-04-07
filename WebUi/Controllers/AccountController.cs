@@ -26,13 +26,8 @@ namespace WebUi.Controllers
             if (ModelState.IsValid)
             {
                 Account ac = null;
-                //using (SQLAccountRepository rep = new SQLAccountRepository())
                 using (ProductContext db = new ProductContext())
                 {
-                    /*foreach (var i in rep.GetList())
-                    {
-                        if ()
-                    }*/
                     ac = db.Accounts.FirstOrDefault(u => u.Mail == model.Mail && u.Password == model.Password);
                 }
 
@@ -67,12 +62,8 @@ namespace WebUi.Controllers
 
             if (ac == null)
             {
-                //using (SQLAccountRepository rp = new SQLAccountRepository())
                 using (ProductContext db = new ProductContext())
                 {
-                    //rp.Create(new User{Mail = model.Mail, Password = model.Password, FirstName = model.FirstName, LastName = model.LastName});
-                    //rp.Save();
-
                     Account User = new Account()
                     {
                         Mail = model.Mail,
@@ -81,7 +72,6 @@ namespace WebUi.Controllers
                         LastName = model.LastName
                     };
                     db.Accounts.Add(User);
-
                     db.SaveChanges();
                     ac = db.Accounts.Where(u => u.Mail == model.Mail && u.Password == model.Password).FirstOrDefault();
                 }

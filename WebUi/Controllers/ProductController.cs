@@ -22,34 +22,22 @@ namespace WebUi.Controllers
         [HttpPost]
         public ActionResult AddToCart(int id)
         {
-            //DB.AddToCart(id);
-            SQLPurchaseRepository rp = new SQLPurchaseRepository();
-            Purchase pur = new Purchase()
-            {
-                ProductID = id,
-                AccountName = User.Identity.Name
-            };
-            rp.Create(pur);
-            rp.Save();
-            IEnumerable<Product> p= new List<Product>();
-            return View("Ok",p);
+            DB.AddToCart(id,User.Identity.Name);
+            return RedirectToAction("Index","Product");
         }
 
         [HttpPost]
         public ActionResult Remove(int id)
         {
             DB.RemoveProduct(id);
-            return View("ROk");
+            return RedirectToAction("Index", "Product");
         }
 
         [HttpPost]
         public ActionResult DeleteFromCart(int id)
         {
-            SQLPurchaseRepository rf = new SQLPurchaseRepository();
-            rf.Delete(id);
-            rf.Save();
+            DB.RemovePurchase(id);
             return RedirectToAction("Cart", "Product");
-            //return View("Index");
         }
 
         [HttpGet]
@@ -62,7 +50,7 @@ namespace WebUi.Controllers
         public ActionResult Create(Product product)
         {
             DB.AddProduct(product);
-            return View(product);
+            return RedirectToAction("Index", "Product");
         }
 
         [HttpGet]
