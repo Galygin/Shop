@@ -43,7 +43,7 @@ namespace Repository.Repository
         {
             Product p = db.Products.Find(id);
             if (p != null)
-                db.Products.Remove(p);
+                p.Selling = false;
         }
 
         public void Save()
