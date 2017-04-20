@@ -49,6 +49,8 @@ namespace WebUi.Controllers
         [HttpPost]
         public ActionResult Create(Domain.Product product)
         {
+            product.Selling = true;
+
             DB.AddProduct(product);
             return RedirectToAction("Index", "Product");
         }

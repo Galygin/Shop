@@ -44,6 +44,8 @@ namespace Services
                 ProductID = id,
                 AccountName = name
             };
+            ProductRep.Get(id).Count--;
+            ProductRep.Save();
             PurchaseRep.Create(pur);
             PurchaseRep.Save();*/
         }
