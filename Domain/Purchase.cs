@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    public class Purchase : Boss
+    public class Purchase : EntityBase
     {
         public int ProductID { get; set; }
         public string AccountName { get; set; }

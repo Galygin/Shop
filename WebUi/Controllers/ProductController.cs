@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Domain.Models;
-using Repository.Repository;
 using Services;
+using Domain;
 
 namespace WebUi.Controllers
 {
@@ -47,7 +47,7 @@ namespace WebUi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create(Domain.Product product)
         {
             DB.AddProduct(product);
             return RedirectToAction("Index", "Product");
@@ -56,9 +56,9 @@ namespace WebUi.Controllers
         [HttpGet]
         public ActionResult Cart()
         {
-            ViewBag.Products = DB.ReturnProduct();
-            ViewBag.ID = User.Identity.Name;
-            return View(DB.ReturnPurchases());
+            /*ViewBag.Products = DB.ReturnProduct();
+            ViewBag.ID = User.Identity.Name;*/
+            return View(/*DB.ReturnPurchases()*/);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    public class Account : Boss
+    public class Account : EntityBase
     {
         public string Mail { get; set; }
         public string Password { get; set; }

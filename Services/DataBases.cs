@@ -3,72 +3,79 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Models;
-using Repository.Repository;
+using Domain;
+using Repository.Context;
+using Repository.Repositories;
 
 namespace Services
 {
     public class DataBases
     {
-        SQLProductRepository ProductRep = new SQLProductRepository();
+        /*SQLProductRepository ProductRep = new SQLProductRepository();
         SQLAccountRepository AccountRep = new SQLAccountRepository();
         SQLRecallRepository RecallRep = new SQLRecallRepository();
-        SQLPurchaseRepository PurchaseRep = new SQLPurchaseRepository();
+        SQLPurchaseRepository PurchaseRep = new SQLPurchaseRepository();*/
+        //ProductContext db = new ProductContext();
+        //ProductRepository<Product> Products = new ProductRepository<Product>(new ProductContext()); 
+
+        ProductRepository products = new ProductRepository(new ProductContext());
+
         public void AddProduct(Product p)
         {
-            ProductRep.Create(p);
-            ProductRep.Save();
+            products.Add(p);
+            products.Save();
+        }
+
+        public IEnumerable<Product> ReturnProduct()
+        {
+            return products.Entities();
         }
 
         public void RemoveProduct(int id)
         {
-            ProductRep.Delete(id);
-            ProductRep.Save();
+            products.Delete(id);
+            products.Save();
         }
 
         public void AddToCart(int id, string name)
         {
-            Purchase pur = new Purchase()
+            /*Purchase pur = new Purchase()
             {
                 ProductID = id,
                 AccountName = name
             };
             PurchaseRep.Create(pur);
-            PurchaseRep.Save();
+            PurchaseRep.Save();*/
         }
 
-        public void AddRecall(Recall rec)
+        public void AddRecall(/*Recall rec*/)
         {
-            RecallRep.Create(rec);
-            RecallRep.Save();
+           /* RecallRep.Create(rec);
+            RecallRep.Save();*/
         }
 
-        public void RemoveRecall(int id)
-        {
-            RecallRep.Delete(id);
-            RecallRep.Save();
-        }
+        //public void RemoveRecall(int id)
+        
+            /*RecallRep.Delete(id);
+            RecallRep.Save();*/
+        
 
-        public IEnumerable<Recall> ReturnRecall()
-        {
-            return RecallRep.GetList();
-        }
+        //public IEnumerable<Recall> ReturnRecall()
+        //{
+            /*return RecallRep.GetList();*/
+        //}
 
-        public IEnumerable<Product> ReturnProduct()
-        {
-            return ProductRep.GetList();
-        }
 
-        public IEnumerable<Purchase> ReturnPurchases()
-        {
-            return PurchaseRep.GetList();
-        }
+        //public IEnumerable<Purchase> ReturnPurchases()
+       // {
+           /* return PurchaseRep.GetList();*/
+       // }
         
         public void RemovePurchase(int id)
         {
 
-            PurchaseRep.Delete(id);
-            PurchaseRep.Save();
+            /*PurchaseRep.Delete(id);
+            PurchaseRep.Save();*/
         }
     }
 }

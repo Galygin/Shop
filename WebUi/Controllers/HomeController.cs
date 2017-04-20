@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using Domain.Models;
 using Microsoft.SqlServer.Server;
 using Repository.Context;
-using Repository.Repository;
 using System.Web.Security;
 
 namespace WebUi.Controllers

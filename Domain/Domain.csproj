@@ -46,12 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\Authorization.cs" />
-    <Compile Include="Models\Boss.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Purchase.cs" />
-    <Compile Include="Models\Recall.cs" />
+    <Compile Include="Account.cs" />
+    <Compile Include="Authorization.cs" />
+    <Compile Include="Main\EntityBase.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="Purchase.cs" />
+    <Compile Include="Recall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
