@@ -13,8 +13,8 @@ namespace Repository.Context
         public ProductContext() : base("ApplicationServices")
         { }
         public DbSet<Product> Products { get; set; }
-        /*public DbSet<Account> Accounts { get; set; }
+        public DbSet<Account> Accounts { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
-        public DbSet<Recall> Recalls { get; set; }*/
+        public DbSet<Recall> Recalls { get; set; }
     }
 }

@@ -25,14 +25,7 @@
                             <li><a href="/Product/Cart">Корзина</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <li><a href="/Account/Login">@User.Identity.Name</a></li>
-                            }
-                            else
-                            {
-                                <li><a href="/Account/Login">Вход</a></li>
-                            }
+                            <li><a href="/Account/Login">Личный кабинет</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -46,5 +39,17 @@
             </div>
         </div>
     </div>
+
+    <ul class="dropdown-menu">
+        <li><a href="#">Текст подпункта</a></li>
+        <li><a href="#">Текст подпункта</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Текст подпункта</a></li>
+    </ul>
+<script>
+    function Show() {
+
+    }
+</script>
 </body>
 </html>

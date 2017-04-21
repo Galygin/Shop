@@ -144,7 +144,6 @@
     <Content Include="Views\Recall\Index.cshtml" />
     <Content Include="Views\Recall\Create.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Recall\Ok.cshtml" />
     <Content Include="Views\Product\Cart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

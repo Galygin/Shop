@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Domain.Models;
+using Domain;
 using Services;
 
 namespace WebUi.Controllers
@@ -15,14 +15,14 @@ namespace WebUi.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View(/*DB.ReturnRecall())*/);
+            return View(DB.ReturnRecalls());
         }
 
         [HttpPost]
         public ActionResult Remove(int id)
         {
-            //DB.RemoveRecall(id);
-            return View("Ok");
+            DB.RemoveRecall(id);
+            return RedirectToAction("Index", "Recall");
         }
 
         [HttpGet]
@@ -34,7 +34,7 @@ namespace WebUi.Controllers
         [HttpPost]
         public ActionResult Create(Recall rec)
         {
-            //DB.AddRecall(rec);
+            DB.AddRecall(rec);
             return RedirectToAction("Index","Recall");
         }
 

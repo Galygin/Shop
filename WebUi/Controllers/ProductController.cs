@@ -47,10 +47,8 @@ namespace WebUi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Domain.Product product)
+        public ActionResult Create(Product product)
         {
-            product.Selling = true;
-
             DB.AddProduct(product);
             return RedirectToAction("Index", "Product");
         }
@@ -58,9 +56,9 @@ namespace WebUi.Controllers
         [HttpGet]
         public ActionResult Cart()
         {
-            /*ViewBag.Products = DB.ReturnProduct();
-            ViewBag.ID = User.Identity.Name;*/
-            return View(/*DB.ReturnPurchases()*/);
+            ViewBag.Products = DB.ReturnProduct();
+            ViewBag.ID = User.Identity.Name;
+            return View(DB.ReturnPurchases());
         }
     }
 }

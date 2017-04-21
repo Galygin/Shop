@@ -47,10 +47,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\ProductContext.cs" />
+    <Compile Include="Interfaces\IAccountRepository.cs" />
+    <Compile Include="Interfaces\IPurchaseRepository.cs" />
+    <Compile Include="Interfaces\IRecallRepository.cs" />
     <Compile Include="Interfaces\IRepositoryBase.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AccountRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
+    <Compile Include="Repositories\PurchaseRepository.cs" />
+    <Compile Include="Repositories\RecallRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -11,73 +11,94 @@ namespace Services
 {
     public class DataBases
     {
-        /*SQLProductRepository ProductRep = new SQLProductRepository();
-        SQLAccountRepository AccountRep = new SQLAccountRepository();
-        SQLRecallRepository RecallRep = new SQLRecallRepository();
-        SQLPurchaseRepository PurchaseRep = new SQLPurchaseRepository();*/
-        //ProductContext db = new ProductContext();
-        //ProductRepository<Product> Products = new ProductRepository<Product>(new ProductContext()); 
+        ProductRepository Products = new ProductRepository(new ProductContext());
+        RecallRepository Recalls = new RecallRepository(new ProductContext());
+        PurchaseRepository Purs = new PurchaseRepository(new ProductContext());
 
-        ProductRepository products = new ProductRepository(new ProductContext());
+
+        //////////////////////// ДОБАВЛЕНИЕ УДАЛЕНИЕ ПРОДУКТОВ //////////////////////////////
 
         public void AddProduct(Product p)
         {
-            products.Add(p);
-            products.Save();
+            Products.Add(p);
+            Products.Save();
         }
 
         public IEnumerable<Product> ReturnProduct()
         {
-            return products.Entities();
+            return Products.Entities();
         }
 
         public void RemoveProduct(int id)
         {
-            products.Delete(id);
-            products.Save();
+            Products.Delete(id);
+            Products.Save();
         }
+
+        /////////////////////////////// ДОБАВЛЕНИЕ УДАЛЕНИЕ ОТЗЫВОВ ///////////////////////////
+
+        public void AddRecall(Recall rec)
+        {
+            Recalls.Add(rec);
+            Recalls.Save();
+        }
+
+        public IEnumerable<Recall> ReturnRecalls()
+        {
+            return Recalls.Entities();
+        }
+
+        public void RemoveRecall(int id)
+        {
+            Recalls.Delete(id);
+            Recalls.Save();
+        }
+
+        /////////////////////////////// ДОБАВЛЕНИЕ УДАЛЕНИЕ ПОКУПОК ///////////////////////////
 
         public void AddToCart(int id, string name)
         {
-            /*Purchase pur = new Purchase()
+            var p = Purs.Entities();
+            var l = Products.Entities();
+            var buy = false;
+            foreach (var i in p)
             {
-                ProductID = id,
-                AccountName = name
-            };
-            ProductRep.Get(id).Count--;
-            ProductRep.Save();
-            PurchaseRep.Create(pur);
-            PurchaseRep.Save();*/
+                if ((i.ProductID == id) && (i.AccountName == name))
+                {
+                    Purchase pur1 = new Purchase()
+                    {
+                        ProductID = id,
+                        AccountName = name,
+                        Count = 1 + i.Count
+                    };
+                    Purs.Delete(i.ID);
+                    Purs.Add(pur1);
+                    buy = true;
+                }
+            }
+            if (buy == false)
+            {
+                Purchase pur = new Purchase()
+                {
+                    ProductID = id,
+                    AccountName = name,
+                    Count = 1
+                };
+                Purs.Add(pur);
+            }
+            Purs.Save();
         }
 
-        public void AddRecall(/*Recall rec*/)
+        public IEnumerable<Purchase> ReturnPurchases()
         {
-           /* RecallRep.Create(rec);
-            RecallRep.Save();*/
+            return Purs.Entities();
         }
 
-        //public void RemoveRecall(int id)
-        
-            /*RecallRep.Delete(id);
-            RecallRep.Save();*/
-        
-
-        //public IEnumerable<Recall> ReturnRecall()
-        //{
-            /*return RecallRep.GetList();*/
-        //}
-
-
-        //public IEnumerable<Purchase> ReturnPurchases()
-       // {
-           /* return PurchaseRep.GetList();*/
-       // }
-        
         public void RemovePurchase(int id)
         {
 
-            /*PurchaseRep.Delete(id);
-            PurchaseRep.Save();*/
+            Purs.Delete(id);
+            Purs.Save();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Domain.Models;
+using Domain;
 using Repository.Context;
 using Services;
 using System.Web.Security;
@@ -27,7 +27,7 @@ namespace WebUi.Controllers
                 Account ac = null;
                 using (ProductContext db = new ProductContext())
                 {
-                    //ac = db.Accounts.FirstOrDefault(u => u.Mail == model.Mail && u.Password == model.Password);
+                    ac = db.Accounts.FirstOrDefault(u => u.Mail == model.Mail && u.Password == model.Password);
                 }
 
                 if (ac != null)
@@ -56,7 +56,7 @@ namespace WebUi.Controllers
             Account ac = null;
             using (ProductContext db = new ProductContext())
             {
-                //ac = db.Accounts.FirstOrDefault(u => u.Mail == model.Mail);
+                ac = db.Accounts.FirstOrDefault(u => u.Mail == model.Mail);
             }
 
             if (ac == null)
@@ -71,9 +71,9 @@ namespace WebUi.Controllers
                             FirstName = model.FirstName,
                             LastName = model.LastName
                         };
-                        /*db.Accounts.Add(User);
+                        db.Accounts.Add(User);
                         db.SaveChanges();
-                        ac = db.Accounts.Where(u => u.Mail == model.Mail && u.Password == model.Password).FirstOrDefault();*/
+                        ac = db.Accounts.Where(u => u.Mail == model.Mail && u.Password == model.Password).FirstOrDefault();
                     }
 
                     if (ac != null)
@@ -95,4 +95,6 @@ namespace WebUi.Controllers
             return RedirectToAction("Index", "Home");
         }
     }
+
+
 }
