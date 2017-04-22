@@ -17,5 +17,10 @@ namespace Repository.Repositories
         {
             db = context;
         }
+
+        public override void Delete(int id)
+        {
+            db.Products.Find(id).Removed = true;
+        }
     }
 }

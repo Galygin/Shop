@@ -28,8 +28,7 @@ namespace Repository.Repositories
 
         public virtual void Delete(int id)
         {
-            _dbSet.Remove(_dbSet.Find(id));
-
+           _dbSet.Remove(_dbSet.Find(id));
         }
 
         public virtual void Edit(T m)

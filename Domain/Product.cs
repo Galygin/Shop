@@ -12,5 +12,6 @@ namespace Domain
         public string Name { get; set; }
         public int Price { get; set; }
         public float Size { get; set; }
+        public bool Removed { get; set; }
     }
 }

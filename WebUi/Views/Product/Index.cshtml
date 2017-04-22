@@ -15,38 +15,41 @@
 <div class="row">
     @foreach (var l in Model)
     {
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-            <div class="panel panel-default" style="padding: 7px">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <img src="~/Images/@l.Name .jpg" />
-                    </div>
-                    <div class="col-lg-6">
-                        <h2>@l.Name</h2>
-                        <h4>Цена: @l.Price руб</h4>
-                        <h4>Объём: @l.Size л</h4>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            using (Html.BeginForm("AddToCart", "Product"))
+        if (l.Removed == false)
+        {
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                <div class="panel panel-default" style="padding: 7px">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <img src="~/Images/@l.Name .jpg"/>
+                        </div>
+                        <div class="col-lg-6">
+                            <h2>@l.Name</h2>
+                            <h4>Цена: @l.Price руб</h4>
+                            <h4>Объём: @l.Size л</h4>
+                            @if (User.Identity.IsAuthenticated)
                             {
-                                <input type="hidden" name="ID" id="ID" value="@l.ID" />
-                                <h4><input type="submit" class="btn btn-success" value="В корзину" onclick="Add()"> </h4>
+                                using (Html.BeginForm("AddToCart", "Product"))
+                                {
+                                    <input type="hidden" name="ID" id="ID" value="@l.ID"/>
+                                    <h4><input type="submit" class="btn btn-success" value="В корзину" onclick="Add()"> </h4>
+                                }
                             }
-                        }
-                        @if (User.Identity.Name == "Admin")
-                        {
-                            using (Html.BeginForm("Remove", "Product"))
+                            @if (User.Identity.Name == "Admin")
                             {
-                                <input type="hidden" name="ID" id="ID" value="@l.ID" />
-                                <h4><input type="submit" class="btn btn-danger" value="Удалить"></h4>
+                                using (Html.BeginForm("Remove", "Product"))
+                                {
+                                    <input type="hidden" name="ID" id="ID" value="@l.ID"/>
+                                    <h4><input type="submit" class="btn btn-danger" value="Удалить"></h4>
+                                }
                             }
-                        }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-1">
-        </div>
+            <div class="col-lg-1">
+            </div>
+        }
     }
 </div>
 <script>

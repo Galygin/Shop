@@ -49,6 +49,7 @@ namespace WebUi.Controllers
         [HttpPost]
         public ActionResult Create(Product product)
         {
+            product.Removed = false;
             DB.AddProduct(product);
             return RedirectToAction("Index", "Product");
         }
